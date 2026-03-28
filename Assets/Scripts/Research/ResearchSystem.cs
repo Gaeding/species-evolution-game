@@ -27,6 +27,18 @@ namespace SpeciesEvolution.Research
                 RegisterUnlocked(tech);
         }
 
+        /// <summary>
+        /// Grants tech at session start (no cost, no <see cref="TechnologyResearched"/> event). Used by nation / game session.
+        /// </summary>
+        public void RegisterStartingUnlocks(IEnumerable<TechnologyDefinition> technologies)
+        {
+            if (technologies == null)
+                return;
+
+            foreach (var tech in technologies)
+                RegisterUnlocked(tech);
+        }
+
         public IEnumerable<TechnologyId> UnlockedTechnologyIds => _unlocked;
 
         public bool IsUnlocked(TechnologyDefinition technology)

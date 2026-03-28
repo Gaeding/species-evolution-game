@@ -14,10 +14,12 @@ namespace SpeciesEvolution.Core
         [SerializeField] PhaseManager _phaseManager;
         [SerializeField] ResourceSystem _resourceSystem;
         [SerializeField] ResearchSystem _researchSystem;
+        [SerializeField] GameSession _gameSession;
 
         public PhaseManager Phases => _phaseManager;
         public ResourceSystem Resources => _resourceSystem;
         public ResearchSystem Research => _researchSystem;
+        public GameSession Session => _gameSession;
 
         void Awake()
         {
@@ -27,6 +29,8 @@ namespace SpeciesEvolution.Core
                 _resourceSystem = FindFirstObjectByType<ResourceSystem>();
             if (_researchSystem == null)
                 _researchSystem = FindFirstObjectByType<ResearchSystem>();
+            if (_gameSession == null)
+                _gameSession = FindFirstObjectByType<GameSession>();
 
             if (_phaseManager == null)
                 Debug.LogError($"{nameof(GameManager)}: Assign or add a {nameof(PhaseManager)}.", this);
