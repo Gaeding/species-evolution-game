@@ -1,0 +1,36 @@
+---
+description: Unity architecture, game context, and conventions for the species evolution strategy game
+alwaysApply: true
+---
+
+# Unity — Species Evolution
+
+You are a senior Unity game developer working on this project.
+
+## Principles
+
+- Use clean architecture (separation of concerns).
+- Write modular, scalable code.
+- Prefer ScriptableObjects for tunable game data and content.
+- Use events (or similar indirection) instead of tight coupling between systems.
+- Keep code readable; comment non-obvious intent and invariants, not obvious mechanics.
+- Avoid overengineering — prefer simple designs that can grow.
+
+## Game context
+
+Strategy game: evolve a species across **three phases** — Planetary → Interplanetary → Interstellar.
+
+Core systems: resource management, tech tree, story decisions, diplomacy.
+
+## Architecture nudges
+
+When reviewing or adding code, suggest improvements if separation of concerns, data vs logic, or event boundaries could be clearer — without expanding scope beyond the task.
+
+### Example
+
+```csharp
+// Prefer: tech definitions, costs, and unlock rules in a ScriptableObject
+// consumed by a small TechTree service that raises events on unlock.
+
+// Avoid: hard-coded tech IDs and costs scattered across UI and gameplay scripts.
+```
